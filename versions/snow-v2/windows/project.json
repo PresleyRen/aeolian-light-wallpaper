@@ -1,0 +1,155 @@
+{
+  "title": "WLOP - Aeolian | Light 优化重制",
+  "type": "web",
+  "file": "index.html",
+  "preview": "preview.jpg",
+  "description": "独立轻量重制：时钟、日期、系统媒体与半圆音频频谱。默认720p24；原视频自带雪花。无原项目依赖。",
+  "contentrating": "Everyone",
+  "tags": [
+    "Fantasy"
+  ],
+  "general": {
+    "properties": {
+      "quality": {
+        "text": "画质 / 功耗",
+        "type": "combo",
+        "value": "eco",
+        "order": 0,
+        "options": [
+          {
+            "label": "省电：720p 24帧 / 特效12帧",
+            "value": "eco"
+          },
+          {
+            "label": "清晰：1080p 约30帧",
+            "value": "balanced"
+          }
+        ]
+      },
+      "fps": {
+        "text": "特效帧率（省电档最高12）",
+        "type": "slider",
+        "value": 12,
+        "order": 1,
+        "min": 10,
+        "max": 30,
+        "precision": 0
+      },
+      "clock": {
+        "text": "显示时间",
+        "type": "bool",
+        "value": true,
+        "order": 2
+      },
+      "date": {
+        "text": "显示日期",
+        "type": "bool",
+        "value": true,
+        "order": 3
+      },
+      "hour24": {
+        "text": "24小时制",
+        "type": "bool",
+        "value": false,
+        "order": 4
+      },
+      "seconds": {
+        "text": "显示秒数",
+        "type": "bool",
+        "value": false,
+        "order": 5
+      },
+      "englishDate": {
+        "text": "英文日期",
+        "type": "bool",
+        "value": true,
+        "order": 6
+      },
+      "spectrum": {
+        "text": "音乐半圆频谱",
+        "type": "bool",
+        "value": true,
+        "order": 7
+      },
+      "sensitivity": {
+        "text": "频谱灵敏度",
+        "type": "slider",
+        "value": 1.5,
+        "order": 8,
+        "min": 0.1,
+        "max": 5,
+        "precision": 1
+      },
+      "particles": {
+        "text": "轻量雪花数量（默认24）",
+        "type": "slider",
+        "value": 24,
+        "order": 9,
+        "min": 0,
+        "max": 80,
+        "precision": 0
+      },
+      "dim": {
+        "text": "背景压暗程度",
+        "type": "slider",
+        "value": 0.08,
+        "order": 10,
+        "min": 0,
+        "max": 0.6,
+        "precision": 2
+      },
+      "hudX": {
+        "text": "时钟/频谱横向位置 %",
+        "type": "slider",
+        "value": 50,
+        "order": 11,
+        "min": 10,
+        "max": 90,
+        "precision": 0
+      },
+      "hudY": {
+        "text": "时钟/频谱纵向位置 %",
+        "type": "slider",
+        "value": 50,
+        "order": 12,
+        "min": 15,
+        "max": 75,
+        "precision": 0
+      },
+      "hudScale": {
+        "text": "时钟/频谱缩放",
+        "type": "slider",
+        "value": 1,
+        "order": 13,
+        "min": 0.5,
+        "max": 1.5,
+        "precision": 2
+      },
+      "color": {
+        "text": "文字与频谱颜色",
+        "type": "color",
+        "value": "1 1 1",
+        "order": 14
+      },
+      "media": {
+        "text": "显示系统媒体歌名/歌手",
+        "type": "bool",
+        "value": true,
+        "order": 15
+      },
+      "caption": {
+        "text": "自定义文字（无歌名时显示）",
+        "type": "textinput",
+        "value": "",
+        "order": 16
+      },
+      "captionArtist": {
+        "text": "自定义第二行",
+        "type": "textinput",
+        "value": "",
+        "order": 17
+      }
+    },
+    "supportsaudioprocessing": true
+  }
+}
