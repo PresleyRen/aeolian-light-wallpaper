@@ -1,0 +1,20 @@
+{
+  "quality": "eco",
+  "fps": 12,
+  "clock": true,
+  "date": true,
+  "hour24": false,
+  "seconds": false,
+  "englishDate": true,
+  "spectrum": true,
+  "sensitivity": 1.5,
+  "particles": 24,
+  "dim": 0.08,
+  "hudX": 50,
+  "hudY": 50,
+  "hudScale": 1,
+  "color": "#ffffff",
+  "media": true,
+  "caption": "",
+  "captionArtist": ""
+}

@@ -1,0 +1,8 @@
+{
+  "title": "雪花版",
+  "defaults": {
+    "particles": 24,
+    "fps": 12,
+    "quality": "eco"
+  }
+}

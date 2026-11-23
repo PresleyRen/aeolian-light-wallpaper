@@ -8,6 +8,8 @@ ROOT = Path(__file__).resolve().parent.parent
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--source', required=True, type=Path)
 parser.add_argument('--ffmpeg', default=None)
+parser.add_argument('--quality', choices=['eco','balanced','both'], default='eco')
+parser.add_argument('--format', choices=['webm','mp4','all'], default='all')
 args = parser.parse_args()
 source = args.source.resolve()
 if not source.is_file():
@@ -29,10 +31,12 @@ def run(options, target):
 # Transcode rather than relabel arbitrary inputs. Both WebMs are VP9 profile 0.
 for name, filt, quality in [('background.webm', 'fps=30000/1001', '30'),
                              ('eco.webm', 'scale=1280:720:flags=lanczos,fps=24', '33')]:
+    if args.format=='mp4' or (args.quality!='both' and (name.startswith('eco') != (args.quality=='eco'))): continue
     run(['-vf', filt, '-c:v', 'libvpx-vp9', '-crf', quality, '-b:v', '0',
          '-deadline', 'good', '-cpu-used', '4', '-row-mt', '1', '-pix_fmt', 'yuv420p'], name)
 for name, filt, quality in [('background.mp4', 'fps=30000/1001', '21'),
                              ('eco.mp4', 'scale=1280:720:flags=lanczos,fps=24', '22')]:
+    if args.format=='webm' or (args.quality!='both' and (name.startswith('eco') != (args.quality=='eco'))): continue
     run(['-vf', filt, '-c:v', 'libx264', '-crf', quality, '-preset', 'fast',
          '-pix_fmt', 'yuv420p', '-movflags', '+faststart'], name)
 subprocess.run([ffmpeg, '-y', '-hide_banner', '-loglevel', 'error', '-i', str(source),

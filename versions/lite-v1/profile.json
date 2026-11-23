@@ -1,0 +1,8 @@
+{
+  "title": "省电版",
+  "defaults": {
+    "particles": 0,
+    "fps": 12,
+    "quality": "eco"
+  }
+}

@@ -1,0 +1,272 @@
+{
+  "method": "Windows Chrome headless, viewport 1920x1080 DPR2, 3 repeats x 3 seconds, same local 720p24 video. Main renderer metrics only. Not native host or physical GPU measurements.",
+  "beforeCommit": "75f2ae8",
+  "before": [
+    {
+      "case": "video-only",
+      "repeat": 0,
+      "seconds": 3.005,
+      "scriptMs": 0,
+      "taskMs": 2.824,
+      "jsHeapMiB": 1.92,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "video-only",
+      "repeat": 1,
+      "seconds": 3.011,
+      "scriptMs": 0,
+      "taskMs": 3.738,
+      "jsHeapMiB": 1.354,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "video-only",
+      "repeat": 2,
+      "seconds": 3.005,
+      "scriptMs": 0,
+      "taskMs": 4.588,
+      "jsHeapMiB": 1.354,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-silent",
+      "repeat": 0,
+      "seconds": 3.003,
+      "scriptMs": 3.118,
+      "taskMs": 13.381,
+      "jsHeapMiB": 1.724,
+      "draws": 36,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-silent",
+      "repeat": 1,
+      "seconds": 3.007,
+      "scriptMs": 3.087,
+      "taskMs": 13.64,
+      "jsHeapMiB": 1.72,
+      "draws": 35,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-silent",
+      "repeat": 2,
+      "seconds": 3.004,
+      "scriptMs": 3.139,
+      "taskMs": 13.064,
+      "jsHeapMiB": 1.71,
+      "draws": 35,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-music",
+      "repeat": 0,
+      "seconds": 3.008,
+      "scriptMs": 8.43,
+      "taskMs": 20.409,
+      "jsHeapMiB": 1.66,
+      "draws": 36,
+      "ringDraws": 36,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-music",
+      "repeat": 1,
+      "seconds": 3.001,
+      "scriptMs": 8.347,
+      "taskMs": 20.621,
+      "jsHeapMiB": 1.658,
+      "draws": 36,
+      "ringDraws": 36,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-music",
+      "repeat": 2,
+      "seconds": 3.005,
+      "scriptMs": 8.027,
+      "taskMs": 20.137,
+      "jsHeapMiB": 1.623,
+      "draws": 35,
+      "ringDraws": 35,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "paused",
+      "repeat": 0,
+      "seconds": 3.006,
+      "scriptMs": 0,
+      "taskMs": 2.871,
+      "jsHeapMiB": 1.353,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "paused",
+      "repeat": 1,
+      "seconds": 3.007,
+      "scriptMs": 0,
+      "taskMs": 2.281,
+      "jsHeapMiB": 1.353,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "paused",
+      "repeat": 2,
+      "seconds": 3.009,
+      "scriptMs": 0,
+      "taskMs": 2.439,
+      "jsHeapMiB": 1.353,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    }
+  ],
+  "after": [
+    {
+      "case": "video-only",
+      "repeat": 0,
+      "seconds": 3.011,
+      "scriptMs": 0,
+      "taskMs": 3.115,
+      "jsHeapMiB": 1.926,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 2
+    },
+    {
+      "case": "video-only",
+      "repeat": 1,
+      "seconds": 3.006,
+      "scriptMs": 0,
+      "taskMs": 3.035,
+      "jsHeapMiB": 1.36,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 2
+    },
+    {
+      "case": "video-only",
+      "repeat": 2,
+      "seconds": 3.001,
+      "scriptMs": 0,
+      "taskMs": 3.268,
+      "jsHeapMiB": 1.36,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 2
+    },
+    {
+      "case": "snow-silent",
+      "repeat": 0,
+      "seconds": 3.004,
+      "scriptMs": 2.51,
+      "taskMs": 10.769,
+      "jsHeapMiB": 1.553,
+      "draws": 33,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-silent",
+      "repeat": 1,
+      "seconds": 3.015,
+      "scriptMs": 2.553,
+      "taskMs": 10.966,
+      "jsHeapMiB": 1.551,
+      "draws": 32,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-silent",
+      "repeat": 2,
+      "seconds": 3.014,
+      "scriptMs": 2.676,
+      "taskMs": 12.112,
+      "jsHeapMiB": 1.561,
+      "draws": 34,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-music",
+      "repeat": 0,
+      "seconds": 3.002,
+      "scriptMs": 8.51,
+      "taskMs": 18.931,
+      "jsHeapMiB": 1.68,
+      "draws": 32,
+      "ringDraws": 32,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-music",
+      "repeat": 1,
+      "seconds": 3.009,
+      "scriptMs": 8.421,
+      "taskMs": 18.897,
+      "jsHeapMiB": 1.647,
+      "draws": 32,
+      "ringDraws": 32,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "snow-music",
+      "repeat": 2,
+      "seconds": 3.001,
+      "scriptMs": 7.939,
+      "taskMs": 18.588,
+      "jsHeapMiB": 1.653,
+      "draws": 33,
+      "ringDraws": 33,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "paused",
+      "repeat": 0,
+      "seconds": 3.001,
+      "scriptMs": 0,
+      "taskMs": 2.655,
+      "jsHeapMiB": 1.354,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "paused",
+      "repeat": 1,
+      "seconds": 3.009,
+      "scriptMs": 0,
+      "taskMs": 3.012,
+      "jsHeapMiB": 1.354,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    },
+    {
+      "case": "paused",
+      "repeat": 2,
+      "seconds": 3.006,
+      "scriptMs": 0,
+      "taskMs": 2.003,
+      "jsHeapMiB": 1.354,
+      "draws": 0,
+      "ringDraws": 0,
+      "canvasPixels": 435200
+    }
+  ]
+}

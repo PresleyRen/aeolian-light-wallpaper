@@ -16,10 +16,12 @@ window.wallpaperPropertyListener = {
   setPaused(isPaused) { window.Aeolian.pause(isPaused); }
 };
 if (typeof window.wallpaperRegisterAudioListener === 'function') {
+  const mono=new Float32Array(64);
   window.wallpaperRegisterAudioListener(values => {
-    const mono=new Float32Array(64);
+    const state=window.Aeolian;
+    if (!state.acceptsAudio()) return;
     for(let i=0;i<64;i++) mono[i]=((values[i]||0)+(values[i+64]||0))*.5;
-    window.Aeolian.audio(mono);
+    state.audio(mono);
   });
 }
 if (typeof window.wallpaperRegisterMediaPropertiesListener === 'function') {
