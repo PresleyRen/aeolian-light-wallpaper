@@ -17,6 +17,10 @@ python tools/build.py --zip
 
 默认只准备720p24资源；生成两个平台、两个互动版本和各自的纯视频版。独立ZIP位于 `dist/packages/`，每个ZIP都有完整的本地资源和说明。
 
+ZIP解压后的第一层名称带平台前缀，例如 `windows-snow-v2/` 和 `muro-snow-v2/`。代码文件、配置、视频和说明都在该目录内，导入这一层即可。
+
+打包使用明确的必需文件列表：不包含源码目录、测试、缓存、临时文件或未引用的图片。Windows复用 `preview.jpg` 作为视频静态封面；Mac复用 `still.jpg` 作为封面和宿主静态背景。只保留一份必需的封面图，不额外复制到assets。
+
 ```text
 dist/
   windows/
@@ -56,3 +60,5 @@ python tools/build.py --assets "/path/to/prepared-assets" --zip
 资源文件名为 `eco.webm` / `eco.mp4`（720p24），`background.webm` / `background.mp4`（清晰档）和 `still.jpg`。清晰档保持输入尺寸并使用约30fps；以本项目原1080p输入构建时就是1080p。视频静音，完整保留原片长度，不新增首尾过渡。
 
 构建目录会按所选画质移除该目标中已知的旧可选视频，防止eco-only包误带大文件。其他旧版本目录和ZIP不会自动删除；`dist/` 是生成结果，不提交Git。
+
+构建只复制已经准备好的媒体，不会重编码或裁剪视频。只有显式运行 `prepare_media.py` 才进行转码；清理不会删除输入视频或宿主管理的原始壁纸。

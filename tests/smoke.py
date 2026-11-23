@@ -38,6 +38,10 @@ with sync_playwright() as p:
             page.evaluate('Aeolian.apply({spectrum:true})')
             page.wait_for_timeout(150)
             assert page.evaluate('Aeolian.diagnostics().canvas.slice(0,2)')==[640,320]
+            a=page.evaluate('Aeolian.diagnostics().draws')
+            page.evaluate('Aeolian.apply({fps:12}); Aeolian.apply({fps:12})')
+            page.wait_for_timeout(200)
+            assert page.evaluate('Aeolian.diagnostics().draws')==a,'unchanged settings must not redraw'
             if platform=='windows':
                 send='pushAudio(new Array(128).fill(0))'
                 pause='wallpaperPropertyListener.setPaused(true)'
@@ -53,6 +57,8 @@ with sync_playwright() as p:
             assert page.evaluate('Aeolian.diagnostics().ringDraws')==before,'silent callbacks must not redraw'
             page.evaluate('clearInterval(quiet)');page.evaluate(active)
             page.wait_for_function('Math.max(...Aeolian.diagnostics().bands)>.05')
+            page.evaluate(resume)
+            assert page.evaluate('Math.max(...Aeolian.diagnostics().bands)>.05'),'duplicate resume must preserve active audio'
             page.wait_for_function('Math.max(...Aeolian.diagnostics().bands)<.0011',timeout=5000)
             page.evaluate('Aeolian.apply({particles:24})');page.evaluate(active);page.evaluate(pause)
             before=page.evaluate('Aeolian.diagnostics().draws');page.wait_for_timeout(400)

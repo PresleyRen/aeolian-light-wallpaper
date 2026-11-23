@@ -6,8 +6,8 @@ Windows Wallpaper Engine / macOS Muro 动态壁纸：视频背景、时钟、日
 
 | 平台 | 省电互动版 | 雪花互动版 | 纯视频版 |
 | --- | --- | --- | --- |
-| Windows / Wallpaper Engine | `dist/windows/lite-v1` | `dist/windows/snow-v2` | `dist/windows/video-eco` |
-| Mac / Muro | `dist/muro/lite-v1` | `dist/muro/snow-v2` | `dist/muro/video-eco` |
+| Windows / Wallpaper Engine | `windows-lite-v1.zip` | `windows-snow-v2.zip` | `windows-video-eco.zip` |
+| Mac / Muro | `muro-lite-v1.zip` | `muro-snow-v2.zip` | `muro-video-eco.zip` |
 
 - **省电互动版**：0片额外雪花，保留时钟、日期、音乐频谱。原视频自身有雪花。
 - **雪花互动版**：默认24片额外雪花，保留时钟、日期、音乐频谱。
@@ -17,9 +17,23 @@ Windows Wallpaper Engine / macOS Muro 动态壁纸：视频背景、时钟、日
 
 Windows网页版使用WebM；Mac互动版和两平台纯视频版使用H.264 MP4。Windows可显示系统媒体歌名；Muro当前桥接接口没有歌名事件，只提供频谱。互动壁纸用于桌面，Mac锁屏/屏保请使用宿主支持的纯视频方式。
 
-## 获得可安装文件
+## 下载完整包后怎么添加
 
-仓库保存源码、配置和构建工具。原视频、原画、预览图需要使用自己已有的本地资源准备，不在Git中分发。原 WLOP/Aeolian 素材仍归原作者所有。
+下载上表中对应平台的完整安装ZIP，先解压，再导入整个版本文件夹。解压后的文件夹带有 `windows-` 或 `muro-` 前缀，不会把两平台文件混在一起。
+
+**Wallpaper Engine**：Steam库中右键Wallpaper Engine → 管理 → 浏览本地文件 → 打开 `projects/myprojects` → 复制完整的 `windows-snow-v2` 或 `windows-lite-v1` 文件夹进去 → 重新打开壁纸列表，选择对应版本并应用。`project.json` 和 `index.html` 应在版本文件夹第一层。[Windows分步教程、目录示例和常见问题](docs/windows.md)
+
+**Muro**：在Finder解压Mac包 → 打开Muro的Library / 资料库 → 添加/导入完整的 `muro-snow-v2` 或 `muro-lite-v1` 文件夹，或选择该文件夹内的 `index.html` → 选中导入的项目并应用到桌面。[Mac分步教程、音频权限和配置修改](docs/muro.md)
+
+**纯视频**：解压相应的 `video-eco` 包，在宿主中添加其中的 `wallpaper.mp4`。它不包含实时日期、时钟和频谱。
+
+每个包内都有UTF-8的 `使用说明.txt`；已构建的完整包不需要Python、Node或FFmpeg即可运行。
+
+## 如果下载的是GitHub源码ZIP
+
+绿色 **Code → Download ZIP** 下载的是 `aeolian-light-wallpaper-main.zip` 等源码包，**不带视频，不能直接作为完整壁纸导入**。仓库目前没有Release安装附件；使用随项目交付提供的完整安装ZIP，或按下面的方法准备自己的资源并构建。
+
+仓库保存源码、配置和构建工具。原视频、原画、预览图使用自己已有的本地资源准备，不在Git中分发。原 WLOP/Aeolian 素材仍归原作者所有。
 
 需要Python 3与FFmpeg；没有FFmpeg命令时可安装 `imageio-ffmpeg`。
 

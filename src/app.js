@@ -13,6 +13,7 @@
   let nodes = [[],[],[]], mediaTitle = '', mediaArtist = '';
   let draws = 0, ringDraws = 0, generalFps = 30;
   let audioTimer = 0, audioDeadline = 0;
+  let initialized = false;
   const spokes = Array.from({length:64}, (_,i) => {
     const a = Math.PI * i / 63;
     return {x:Math.cos(a),y:Math.sin(a)};
@@ -71,6 +72,7 @@
     wake();
   }
   function apply(patch) {
+    if (initialized && !Object.keys(patch).some(key=>patch[key]!==cfg[key])) return;
     const previous = {...cfg};
     Object.assign(cfg,patch);
     cfg.fps = clamp(finite(cfg.fps),10,30);
@@ -90,6 +92,7 @@
     updateMedia(); updateClock(); selectVideo();
     if (previous.particles !== cfg.particles || previous.spectrum !== cfg.spectrum) resize();
     ringDirty = true;
+    initialized = true;
     wake();
   }
   function expireAudio() {
@@ -109,9 +112,11 @@
       const value = clamp(finite(input[i]),0,1);
       // Silence and sub-pixel differences must not wake a static visualizer.
       const next = value < .002 ? 0 : value;
-      if (Math.abs(bands[i]-next) > .002) changed = true;
       if (next) active = true;
-      if (Math.abs(bands[i]-next) > .002 || next===0) bands[i] = next;
+      if (Math.abs(bands[i]-next) > .002 || next===0) {
+        if (bands[i]!==next) changed = true;
+        bands[i] = next;
+      }
     }
     if (active) {
       audioDeadline = performance.now() + 450;
@@ -185,7 +190,9 @@
     timer=setTimeout(() => { timer=0; frame=requestAnimationFrame(render); },delay);
   }
   function pause(value) {
-    hostPaused=Boolean(value); syncPause();
+    const next=Boolean(value);
+    if (hostPaused===next) return;
+    hostPaused=next; syncPause();
   }
   function syncPause() {
     paused=hostPaused || document.hidden;

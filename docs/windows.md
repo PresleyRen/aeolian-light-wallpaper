@@ -1,36 +1,86 @@
-# Windows / Wallpaper Engine
+# Windows：下载后添加到 Wallpaper Engine
 
-## 选择版本
+## 1. 下载和解压正确的包
 
-| 构建目录 | 用途 | 额外雪花 | 时钟 / 日期 / 频谱 |
-| --- | --- | --- | --- |
-| `dist/windows/lite-v1` | 优先省电 | 默认0 | 支持，默认开启 |
-| `dist/windows/snow-v2` | 保留额外飘雪 | 默认24 | 支持，默认开启 |
-| `dist/windows/video-eco` | 最少网页开销 | 仅原视频里的雪 | 无实时叠加层 |
+| 想要的效果 | 完整安装包 | 解压后的文件夹 |
+| --- | --- | --- |
+| 省电，保留日期/时钟/频谱 | `windows-lite-v1.zip` | `windows-lite-v1` |
+| 雪花、日期/时钟/频谱 | `windows-snow-v2.zip` | `windows-snow-v2` |
+| 原片动态，尽量减少网页开销 | `windows-video-eco.zip` | `windows-video-eco` |
 
-互动版默认720p24 VP9/WebM、12fps特效。没有额外雪花不等于画面没有雪，原视频自身也包含雪。
+右键ZIP → 全部解压。不要在压缩软件内直接打开壁纸，也不要只取出HTML。
 
-## 安装与并存
+GitHub的绿色Code → Download ZIP下载的是**源码**，通常名为 `aeolian-light-wallpaper-main.zip`，不带视频，不能直接导入使用。仓库目前未发布Release安装附件；使用项目交付的完整安装ZIP，或按[构建教程](build.md)自行生成。
 
-1. 构建后把整个版本文件夹复制到 Wallpaper Engine 安装目录的 `projects/myprojects/`。
-2. 分别命名为 `Aeolian-Light-Lite-v1` 和 `Aeolian-Light-Snow-v2`，两个版本可并存。
-3. 在 Wallpaper Engine 中刷新或重新打开壁纸列表，选择对应标题。也可用编辑器从文件夹内的 `index.html` 创建网页壁纸。
-4. 右侧属性可调雪花数量、时间、日期、频谱、位置和颜色。不需Node、Python或FFmpeg运行已构建的壁纸。
+以雪花版为例，解压后确认这一层同时有：
 
-纯视频版可直接拖入 `wallpaper.mp4`，也可把整个 `video-eco` 放进本地项目目录。
+```text
+windows-snow-v2/
+  index.html
+  project.json
+  app.js
+  adapter.js
+  config.js
+  style.css
+  preview.jpg
+  使用说明.txt
+  assets/
+    eco.webm
+```
 
-## 仅桌面时动画
+## 2. 找到 Wallpaper Engine 的安装目录
 
-设置 → 性能 → **其他应用获得焦点：暂停**。其他应用最大化或全屏时也可设为暂停/停止。
+打开Steam → 库 → 右键Wallpaper Engine → 管理 → 浏览本地文件。
 
-此规则由 Wallpaper Engine 判断前台应用，并通过宿主暂停壁纸。背景视频、雪花、频谱一起暂停，返回桌面时恢复并刷新日期时间。它按应用焦点工作，不代表逐像素判断桌面是否被遮挡；点回桌面时即使小窗口仍存在，也可能恢复。
+打开的位置应包含 `wallpaper32.exe` 或 `wallpaper64.exe`。进入 `projects`，再进入 `myprojects`；没有 `myprojects` 时创建一个同名文件夹。
 
-**网页代码无法独立识别所有其他窗口。** 不用 `document.hasFocus()`、鼠标是否在壁纸上，或定时扫描进程代替宿主规则。
+常见位置示例：
 
-## 音乐与画质
+```text
+D:\Steam\steamapps\common\wallpaper_engine\projects\myprojects\
+```
 
-频谱响应系统输出声音，不播放或改变你的音乐。支持Windows系统媒体会话的播放器可提供歌名/歌手；是否有标题取决于播放器。
+以你的实际Steam安装位置为准，不需要重新安装程序。
 
-Web版用WebM；普通H.264 MP4用于纯视频版。默认构建只带720p资源；需要1080p切换时，用 `--quality both` 重新构建，属性中才会提供两个选项。
+## 3. 复制整个文件夹并应用
 
-若仍占用较高，依次保持720p、把雪花24减为12、关闭频谱，或选择纯视频版。多屏播放会增加解码与合成开销；任务管理器应分开看 `3D`、`Video Decode`，不要把显卡总百分比当作单个脚本耗时。
+把解压得到的 `windows-snow-v2` 整个文件夹复制进去。最终层级应为：
+
+```text
+wallpaper_engine/projects/myprojects/windows-snow-v2/project.json
+wallpaper_engine/projects/myprojects/windows-snow-v2/index.html
+wallpaper_engine/projects/myprojects/windows-snow-v2/assets/eco.webm
+```
+
+`project.json` 和 `index.html` 应在版本文件夹的第一层，避免又多套一个 `windows-snow-v2/windows-snow-v2/`。
+
+重新打开Wallpaper Engine的壁纸选择窗口，找到 **Aeolian Light | snow-v2 | 雪花版**，选中并应用。省电版同理，选择 `lite-v1`。两个文件夹可并存，切换版本不需要覆盖原版。
+
+如果列表暂时没更新，关闭并重新打开壁纸选择窗口。备用导入方式：打开壁纸编辑器，将专用文件夹内的 `index.html` 拖到“创建壁纸 / Create Wallpaper”入口；编辑器会复制该文件夹。不要导入整个下载目录或源码仓库根目录。[官方网页壁纸导入说明](https://docs.wallpaperengine.io/en/web/first/gettingstarted.html)
+
+## 4. 设置只在桌面时动画
+
+Wallpaper Engine → 设置 → 性能 → **其他应用获得焦点：暂停**。其他应用最大化/全屏也可设为暂停或停止。
+
+打开一个应用时，背景、雪花和频谱一起暂停；最小化窗口或点回桌面后恢复，日期时间刷新。此规则按应用焦点判断，并非逐像素检测遮挡；点击桌面后，小窗口仍存在时也可能恢复。
+
+右侧壁纸属性可调雪花数量、24小时制、中文日期、频谱和位置。默认720p24视频、12fps特效；省电版额外雪花0，雪花版24。原视频自身也有雪。
+
+## 5. 播放音乐并检查
+
+播放电脑上的音乐，回到桌面。系统输出有声音时，半圆频谱应变化；没有声音时保持静态。播放器提供Windows系统媒体会话信息时才会显示歌名/歌手。壁纸本身静音，不改变音乐播放。
+
+若频谱不动，先检查是否仍在其他应用里、系统是否有输出声音、频谱开关是否打开，以及Wallpaper Engine音频响应是否启用。
+
+## 纯视频版怎么添加
+
+解压 `windows-video-eco.zip`，将 `wallpaper.mp4` 拖到Wallpaper Engine，或按上面的方式把整个文件夹复制进 `myprojects`。纯视频保留原片动态和原片里的雪，没有实时时钟、日期和音乐频谱。
+
+## 可以清理什么
+
+- 已复制到 `myprojects` 并确认能用后，可以删除原下载ZIP和下载目录里重复的解压副本。
+- `使用说明.txt` 看完后可删；它不影响壁纸。
+- **保留安装目录中的HTML、JS、CSS、project.json、preview.jpg和assets视频。** 它们用于加载、配置或预览。
+- 不要删除原创意工坊目录、原视频，或其他壁纸的文件。更新版复制到专用文件夹即可。
+
+已构建壁纸运行时不需要Python、Node或FFmpeg。黑屏或只有时钟时，检查 `assets/eco.webm` 是否跟随整个文件夹复制，以及是否误用了Mac版。
