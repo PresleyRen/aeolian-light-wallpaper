@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aeolian · Light</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <video id="background" autoplay loop muted playsinline preload="auto" poster="assets/still.jpg"></video>
+  <div id="shade"></div>
+  <canvas id="snow" aria-hidden="true"></canvas>
+  <section id="hud" aria-label="时钟与音乐频谱">
+    <div id="time"><span id="digits"></span><span id="period"></span></div>
+    <div id="date"></div>
+    <div id="track"><div id="title"></div><div id="artist"></div></div>
+    <canvas id="spectrum" aria-hidden="true"></canvas>
+  </section>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+  <script src="adapter.js"></script>
+</body>
+</html>
